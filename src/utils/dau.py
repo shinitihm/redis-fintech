@@ -23,3 +23,16 @@ for dia in dias_acesso:
 
 print("Acessos registrados com sucesso!")
 
+
+# b) Verificar se acessou no dia 5
+
+dia_verificar = 5
+offset = dia_verificar - 1
+
+acessou = r.getbit(chave, offset)
+
+if acessou:
+    print(f"O cliente acessou o aplicativo no dia {dia_verificar}.")
+else:
+    print(f"O cliente NÃO acessou o aplicativo no dia {dia_verificar}.")
+
