@@ -36,3 +36,15 @@ if acessou:
 else:
     print(f"O cliente NÃO acessou o aplicativo no dia {dia_verificar}.")
 
+
+# c) Contar dias ativos no mês
+
+total_dias = r.bitcount(chave)
+
+print(f"Total de dias ativos em julho: {total_dias}")
+
+
+if total_dias >= 15:
+    print("Cliente recebe isenção da taxa de manutenção.")
+else:
+    print("Cliente NÃO recebe isenção da taxa de manutenção.")
