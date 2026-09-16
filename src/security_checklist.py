@@ -29,3 +29,25 @@ r.setbit(chave_seguranca, 2, 1)
 
 print("Checklist de segurança registrado!")
 
+
+# ==========================================
+# B) Verificar quantidade de validações
+# necessárias para liberar PIX
+# ==========================================
+
+quantidade_validacoes = r.bitcount(
+    chave_seguranca
+)
+
+
+print(
+    "Quantidade de validações:",
+    quantidade_validacoes
+)
+
+
+if quantidade_validacoes >= 4:
+    print("PIX de alto valor LIBERADO")
+else:
+    print("PIX de alto valor BLOQUEADO - segurança insuficiente")
+
