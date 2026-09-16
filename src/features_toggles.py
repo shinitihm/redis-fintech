@@ -36,3 +36,35 @@ ativar_modulos(
 
 print("Permissões Alfa Tech ativadas")
 
+
+# =====================================
+# B) BITOP AND
+# Permissões comuns entre Alfa e Beta
+# =====================================
+
+# Ativar Beta Log
+
+ativar_modulos(
+    beta,
+    [0, 1, 2, 4]
+)
+
+
+chave_comuns = "permissoes:pj:comuns"
+
+
+r.bitop(
+    "AND",
+    chave_comuns,
+    alfa,
+    beta
+)
+
+
+quantidade_comum = r.bitcount(chave_comuns)
+
+print(
+    "Quantidade de permissões comuns:",
+    quantidade_comum
+)
+
