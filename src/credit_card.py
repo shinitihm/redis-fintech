@@ -10,3 +10,26 @@ r = redis.Redis(
 # Chaves do cliente
 chave_debito = "cartao:debito:cliente:8820:mes8"
 chave_credito = "cartao:credito:cliente:8820:mes8"
+
+# ==========================================
+# A) Registrar utilização de Débito e Crédito
+# ==========================================
+
+# Função auxiliar:
+# Offset = Dia - 1
+def registrar_uso(chave, dias):
+    for dia in dias:
+        offset = dia - 1
+        r.setbit(chave, offset, 1)
+
+
+# Débito usado nos dias 2 e 10
+registrar_uso(chave_debito, [2, 10])
+
+# Crédito usado nos dias 10 e 20
+registrar_uso(chave_credito, [10, 20])
+
+
+print("Eventos registrados!")
+
+
