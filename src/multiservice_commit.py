@@ -37,3 +37,31 @@ r.setbit(chave_push, 4, 1)
 
 
 print("Eventos registrados com sucesso!")
+
+
+# ==========================================
+# B) Consolidar interação Pix OU Push
+# BITOP OR
+# ==========================================
+
+chave_engajamento = "engajamento:cliente:3300:semana1"
+
+
+r.bitop(
+    "OR",
+    chave_engajamento,
+    chave_pix,
+    chave_push
+)
+
+
+dias_interacao = r.bitcount(
+    chave_engajamento
+)
+
+
+print(
+    "Dias com interação:",
+    dias_interacao
+)
+
