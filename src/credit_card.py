@@ -55,3 +55,55 @@ print(
     "Dias usando ambas as funções:",
     dias_ambos
 )
+
+
+# ==========================================
+# C) BITOP XOR
+# Dias usando somente uma modalidade
+# ==========================================
+
+chave_exclusivo = "cartao:exclusivo:cliente:8820:mes8"
+
+r.bitop(
+    "XOR",
+    chave_exclusivo,
+    chave_debito,
+    chave_credito
+)
+
+
+dias_exclusivos = r.bitcount(chave_exclusivo)
+
+print(
+    "Dias usando apenas uma modalidade:",
+    dias_exclusivos
+)
+
+
+# ==========================================
+# Mostrar os dias encontrados
+# ==========================================
+
+def listar_dias(chave):
+    resultado = []
+
+    dados = r.get(chave)
+
+    if dados:
+        for byte_index, byte in enumerate(dados):
+            for bit in range(8):
+                if byte & (1 << (7-bit)):
+                    resultado.append(byte_index * 8 + bit + 1)
+
+    return resultado
+
+
+print(
+    "Dias em comum:",
+    listar_dias(chave_ambos)
+)
+
+print(
+    "Dias exclusivos:",
+    listar_dias(chave_exclusivo)
+)
