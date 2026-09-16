@@ -65,3 +65,36 @@ print(
     dias_interacao
 )
 
+
+# ==========================================
+# Visualizar dias ativos
+# ==========================================
+
+dias = {
+    0: "Domingo",
+    1: "Segunda",
+    2: "Terça",
+    3: "Quarta",
+    4: "Quinta",
+    5: "Sexta",
+    6: "Sábado"
+}
+
+
+def listar_dias(chave):
+
+    resultado = []
+
+    for bit in range(7):
+        if r.getbit(chave, bit):
+            resultado.append(
+                dias[bit]
+            )
+
+    return resultado
+
+
+print(
+    "Dias de engajamento:",
+    listar_dias(chave_engajamento)
+)
