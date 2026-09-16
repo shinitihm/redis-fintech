@@ -33,3 +33,25 @@ registrar_uso(chave_credito, [10, 20])
 print("Eventos registrados!")
 
 
+# ==========================================
+# B) BITOP AND
+# Dias em que usou Débito e Crédito juntos
+# ==========================================
+
+chave_ambos = "cartao:ambos:cliente:8820:mes8"
+
+r.bitop(
+    "AND",
+    chave_ambos,
+    chave_debito,
+    chave_credito
+)
+
+
+# Contar bits ligados
+dias_ambos = r.bitcount(chave_ambos)
+
+print(
+    "Dias usando ambas as funções:",
+    dias_ambos
+)
