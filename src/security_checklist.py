@@ -51,3 +51,17 @@ if quantidade_validacoes >= 4:
 else:
     print("PIX de alto valor BLOQUEADO - segurança insuficiente")
 
+
+# ==========================================
+# C) Testar STRLEN
+# ==========================================
+
+tamanho_bitmap = r.strlen(
+    chave_seguranca
+)
+
+
+print(
+    "Tamanho do Bitmap em bytes:",
+    tamanho_bitmap
+)
